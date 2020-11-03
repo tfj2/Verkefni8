@@ -16,7 +16,7 @@
 function encode(str, n, alphabet1) {
   let newStr = '';
   let i;
-  alphabet1 = alphabet1.toLowerCase()
+  alphabet1 = alphabet1.toLowerCase();
   for (i = 0; i < str.length; i++) {
     if (alphabet1.indexOf(str.charAt(i)) + n > alphabet1.length - 1) {
       newStr += alphabet1.charAt(n - alphabet1.length + alphabet1.indexOf(str.charAt(i)));
@@ -27,7 +27,6 @@ function encode(str, n, alphabet1) {
   newStr.toUpperCase();
   return newStr;
 }
-
 
 /**
  * Afkóðar streng með því að hliðra honum um n stök.
@@ -47,10 +46,10 @@ const Caesar = (() => {
   let theAlphabet = 'AÁBDÐEÉFGHIÍJKLMNOÓPRSTUÚVXYÝÞÆÖ';
   alphabet.addEventListener('input', () => {
     theAlphabet = alphabet.value;
-    if(type === 'encode')
-    document.getElementsByClassName("result")[0].textContent = '' + encode(Gildi, shift, theAlphabet);
-    else
-    document.getElementsByClassName("result")[0].textContent = '' + decode(Gildi, shift, theAlphabet);
+  if(type === 'encode')
+     document.getElementsByClassName('result')[0].textContent = '' + encode(Gildi, shift, theAlphabet);
+   else
+     document.getElementsByClassName('result')[0].textContent = '' + decode(Gildi, shift, theAlphabet);
   });
 
   // Default type, uppfært af radio input
@@ -69,11 +68,11 @@ const Caesar = (() => {
   const shifts = document.querySelectorAll('input[type=range]');
   function shiftChanged(e) {
     shift = `${e.target.value}`;
-    if(type === 'encode')
-    document.getElementsByClassName("result")[0].textContent = '' + encode(Gildi, shift, theAlphabet);
-    else
-    document.getElementsByClassName("result")[0].textContent = '' + decode(Gildi, shift, theAlphabet);
-    document.getElementsByClassName("shiftValue")[0].textContent = '' + shift;
+if(type === 'encode')
+ document.getElementsByClassName('result')[0].textContent = '' + encode(Gildi, shift, theAlphabet);
+else
+ document.getElementsByClassName('result')[0].textContent = '' + decode(Gildi, shift, theAlphabet);
+document.getElementsByClassName('shiftValue')[0].textContent = '' + shift;
   }
 
   for (let i = 0; i < shifts.length; i++) {
@@ -83,10 +82,10 @@ const Caesar = (() => {
   let Gildi = '';
   input.addEventListener('input', () => {
     Gildi = input.value;
-    if(type === 'encode')
-    document.getElementsByClassName("result")[0].textContent = '' + encode(Gildi, shift, theAlphabet);
-    else
-    document.getElementsByClassName("result")[0].textContent = '' + decode(Gildi, shift, theAlphabet);
+  if(type === 'encode')
+    document.getElementsByClassName('result')[0].textContent = '' + encode(Gildi, shift, theAlphabet);
+  else
+    document.getElementsByClassName('result')[0].textContent = '' + decode(Gildi, shift, theAlphabet);
   });
 
   function init(el) {
