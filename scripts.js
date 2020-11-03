@@ -39,7 +39,7 @@ function encode(str, n, alphabet1) {
  */
 function decode(str, n, alphabet1) {
   let m = alphabet1.length - n;
-  return encode(str, m);
+  return encode(str, m, alphabet1);
 }
 
 const Caesar = (() => {
@@ -47,11 +47,10 @@ const Caesar = (() => {
   let theAlphabet = 'AÁBDÐEÉFGHIÍJKLMNOÓPRSTUÚVXYÝÞÆÖ';
   alphabet.addEventListener('input', () => {
     theAlphabet = alphabet.value;
-    console.log(theAlphabet)
     if(type === 'encode')
-    console.log(encode(Gildi, shift, theAlphabet))
-   else
-    console.log(decode(Gildi, shift, theAlphabet))
+    document.getElementsByClassName("result")[0].textContent = '' + encode(Gildi, shift, theAlphabet);
+    else
+    document.getElementsByClassName("result")[0].textContent = '' + decode(Gildi, shift, theAlphabet);
   });
 
   // Default type, uppfært af radio input
@@ -59,7 +58,6 @@ const Caesar = (() => {
   const radios = document.querySelectorAll('input[type=radio]');
   function radioChanged(e) {
     type = `${e.target.value}`;
-    console.log(type)
   }
 
   for (let i = 0; i < radios.length; i++){
@@ -71,11 +69,11 @@ const Caesar = (() => {
   const shifts = document.querySelectorAll('input[type=range]');
   function shiftChanged(e) {
     shift = `${e.target.value}`;
-    console.log(shift)
     if(type === 'encode')
-    console.log(encode(Gildi, shift, theAlphabet))
-   else
-    console.log(decode(Gildi, shift, theAlphabet))
+    document.getElementsByClassName("result")[0].textContent = '' + encode(Gildi, shift, theAlphabet);
+    else
+    document.getElementsByClassName("result")[0].textContent = '' + decode(Gildi, shift, theAlphabet);
+    document.getElementsByClassName("shiftValue")[0].textContent = '' + shift;
   }
 
   for (let i = 0; i < shifts.length; i++) {
@@ -85,17 +83,16 @@ const Caesar = (() => {
   let Gildi = '';
   input.addEventListener('input', () => {
     Gildi = input.value;
-    console.log(Gildi)
     if(type === 'encode')
-     console.log(encode(Gildi, shift, theAlphabet))
+    document.getElementsByClassName("result")[0].textContent = '' + encode(Gildi, shift, theAlphabet);
     else
-     console.log(decode(Gildi, shift, theAlphabet))
+    document.getElementsByClassName("result")[0].textContent = '' + decode(Gildi, shift, theAlphabet);
   });
-
 
   function init(el) {
     // Setja event handlera á viðeigandi element
   }
+
 
   return {
     init,
